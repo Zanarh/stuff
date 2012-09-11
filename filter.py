@@ -1,3 +1,24 @@
+# This program splits each line of a given text file according to
+# a given list of characters, i.e. the text is split at each
+# character, if present within the text.
+
+# This program has only been tested with the following files:
+# 	testing.tbl, testing.ext
+# and with the following inputs:
+# 	>> 2
+# 	>> testing.tbl
+# 	>> |
+# 	>> 5
+# 	>> testing.ext
+# 	>> |
+# 	>> 1
+
+# The result should be:
+# 0001 | Last Trade/Last Price | Last price for the security. Field updates in realtime.
+# 0002 | Bid Price | Current bid price in the market.
+# 0003 | Ask Price | Current ask price in the market.
+
+
 from string import strip
 
 def main():
@@ -15,6 +36,7 @@ them according to a selected column from each text file.'''
 	# processes each file in turn
 	# should change this to allow input of all parameters first
 	for i in range(int(x)):
+		# col here is a string
 		fileopened, spoint, col = filename()
 		splittext = filterer(fileopened, spoint)
 		grand.append(splittext)
@@ -36,8 +58,6 @@ them according to a selected column from each text file.'''
 				outputstring += k[l] + ' | '
 			else: outputstring += k[l]
 		print outputstring
-
-
 
 
 def filename():
@@ -81,6 +101,7 @@ def combiner(text1, text2, col1, col2):
 	tot = []
 	for i in range(len(text1)):
 		x = []
+		# have to adjust the col values
 		x.append(text1[i][col1-1])
 		x.append(text1[i][col1])
 		for j in range(len(text2)):
@@ -88,7 +109,6 @@ def combiner(text1, text2, col1, col2):
 				x.append(text2[j][col2])
 		tot.append(x)
 	return tot
-
 
 
 main()
