@@ -17,9 +17,9 @@ def probrest(a, n, count, counter, lister):
 			newlister.append(i)
 			probrest(i+1, n, count, counter, newlister)
 	else:
-		string = ''
+		string = []
 		for i in lister:
-			string += str(i)
+			string.append(str(i))
 		global output
 		output.append(string)
 
